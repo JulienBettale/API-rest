@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API_rest.API.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API_rest.API.Controllers
@@ -14,16 +15,11 @@ namespace API_rest.API.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "value1", "value2","value3", "value4" };
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-
+        
         // POST api/values
         [HttpPost]
         public void Post([FromBody] string value)
