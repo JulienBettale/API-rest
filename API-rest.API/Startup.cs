@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -29,8 +30,10 @@ namespace API_rest.API
             services.AddMvc(
                 options =>
                 {
-                    options.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json").MediaType);
-                }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+                    //J'ajoute un format json qui correspond au contentType application/json
+                    // possiblité de changer le contentType en ajoutant une extension
+                    options.FormatterMappings.SetMediaTypeMappingForFormat("json", "application/json");
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

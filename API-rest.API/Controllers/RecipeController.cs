@@ -5,12 +5,13 @@ using System.Collections.Generic;
 
 namespace API_rest.API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class RecipeController : ControllerBase
     {
-         // GET api/values
-        [HttpGet]
+        [FormatFilter]
+        //Cas de l'action Get() sans arguments, on verifie le .json directement pour la page recipe
+        [HttpGet("~/api/{page=recipe}.{format?}")]
         public ActionResult<Result> Get()
         {
             RecipeRepository recipeRepository = new RecipeRepository();
